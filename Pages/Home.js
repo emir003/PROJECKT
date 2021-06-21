@@ -1,11 +1,12 @@
 import React from "react";
-import CarouselBox from "../Components/CarouselBox";
+import CarouselBox from "../components/CarouselBox";
 
 
 export default function Home() {
   return(
 
      <CarouselBox />
-
+ 
+    
      )
 }
