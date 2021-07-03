@@ -2,29 +2,33 @@ import React from "react";
 import Header from "./components/Header";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Club from "./pages/Club";
+import Login from "./pages/Login";
+import Club from "./components/Club";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Blog from "./pages/Blog";
-import Contacts from "./pages/Contacts";
-import Reg from "./pages/Registration";
+import Register from "./pages/Register";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
+
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Navigation />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/blog" component={Blog} />
-        <Route exact path="/contacts" component={Contacts} />
-        <Route exact path="/reg" component={Reg} />
-      </Switch>
-      <Club /> 
-    </Router>
+    <div className="page-container">
+      <div className="content-wrapp">
+        <Router>
+         
+          <Header />
+          <Navigation />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route path="/club/:club_id" component={Club} />
+          </Switch>
+        </Router>
+      </div>
+      <Footer />
+    </div>
   );
 }
 

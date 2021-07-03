@@ -1,7 +1,8 @@
-import { SET_CLUB } from "../actions/types";
+import { SET_CLUB, START_FETCH, END_FETCH } from "../actions/types";
 
 const initalState = {
   clubs: [],
+  loading: true,
 };
 
 export default function clubReducer(state = initalState, action) {
@@ -11,7 +12,16 @@ export default function clubReducer(state = initalState, action) {
         ...state,
         clubs: action.payload,
       };
-
+    case START_FETCH:
+      return {
+        ...state,
+        loading: true,
+      };
+    case END_FETCH:
+      return {
+        ...state,
+        loading: false,
+      };
     default:
       return state;
   }

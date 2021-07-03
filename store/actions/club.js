@@ -1,4 +1,4 @@
-import { SET_CLUB } from "./types";
+import { SET_CLUB, START_FETCH, END_FETCH } from "./types";
 
 export function setClub(data) {
   return {
@@ -7,11 +7,25 @@ export function setClub(data) {
   };
 }
 
-export function fetchClub() {
+export function fetchClub(id) {
   return function (dispatch) {
-    fetch("http://azizdavletov.pythonanywhere.com/club/table")
+    dispatch({type: START_FETCH});
+    fetch("https://azizdavletov.pythonanywhere.com/club/computer_clubs/" + id)
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data)
+        dispatch(setClub(data));
+        dispatch({type: END_FETCH});
+      });
+  };
+}
+
+export function fetchGames(id) {
+  return function (dispatch) {
+    fetch("https://azizdavletov.pythonanywhere.com/club/computer_clubs/")
       .then((data) => data.json())
       .then((data) => {
+        console.log(data);
         dispatch(setClub(data));
       });
   };
